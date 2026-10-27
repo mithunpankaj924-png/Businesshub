@@ -1,0 +1,1135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>BusinessHub | Settings</title>
+
+    <link
+        rel="stylesheet"
+        href="settings.css"
+    >
+
+    <script
+        src="https://unpkg.com/lucide@latest"
+    ></script>
+
+</head>
+
+
+<body>
+
+<div class="dashboard">
+
+
+    <!-- ==============================
+         SIDEBAR
+    =============================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <img
+                src="./images/company logo.png"
+                alt="BusinessHub"
+            >
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="dashboard.html"
+                class="nav-item"
+            >
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+
+
+            <a
+                href="customer.html"
+                class="nav-item"
+            >
+                <i data-lucide="users"></i>
+                Customers
+            </a>
+
+
+            <a
+                href="appointments.html"
+                class="nav-item"
+            >
+                <i data-lucide="calendar-check"></i>
+                Appointments
+            </a>
+
+
+            <a
+                href="calender.html"
+                class="nav-item"
+            >
+                <i data-lucide="calendar-days"></i>
+                Calendar
+            </a>
+
+
+            <a
+                href="staff.html"
+                class="nav-item"
+            >
+                <i data-lucide="user-round"></i>
+                Staff
+            </a>
+
+
+            <a
+                href="service.html"
+                class="nav-item"
+            >
+                <i data-lucide="sparkles"></i>
+                Services
+            </a>
+
+
+            <a
+                href="reports.html"
+                class="nav-item"
+            >
+                <i data-lucide="bar-chart-3"></i>
+                Reports
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="settings.html"
+                class="nav-item active"
+            >
+                <i data-lucide="settings"></i>
+                Settings
+            </a>
+
+
+            <a
+                href="index.html"
+                class="nav-item logout"
+            >
+                <i data-lucide="log-out"></i>
+                Sign out
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==============================
+         MAIN CONTENT
+    =============================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="search-box">
+
+                <span>⌕</span>
+
+                <input
+                    type="text"
+                    placeholder="Search settings..."
+                >
+
+            </div>
+
+
+            <div class="owner-section">
+
+                <button class="notification">
+
+                    <i data-lucide="bell"></i>
+
+                </button>
+
+
+                <div class="owner-info">
+
+                    <strong>Owner</strong>
+
+                    <small>
+                        Business Owner
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ==============================
+             SETTINGS CONTENT
+        =============================== -->
+
+        <section class="settings-content">
+
+
+            <div class="page-header">
+
+                <div>
+
+                    <h1>
+                        Settings
+                    </h1>
+
+                    <p>
+                        Manage your business and account settings.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==============================
+                 BUSINESS INFORMATION
+            =============================== -->
+
+            <section class="settings-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Business Information
+                        </h2>
+
+                        <p>
+                            Update your business details.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="businessSettingsForm">
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Business Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="businessName"
+                                placeholder="BusinessHub"
+                            >
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Business Phone
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="businessPhone"
+                                placeholder="Enter phone number"
+                            >
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Business Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="businessEmail"
+                                placeholder="Enter email"
+                            >
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Business Website
+                            </label>
+
+                            <input
+                                type="url"
+                                id="businessWebsite"
+                                placeholder="https://example.com"
+                            >
+
+                        </div>
+
+
+
+                        <div class="form-group full-width">
+
+                            <label>
+                                Business Address
+                            </label>
+
+                            <textarea
+                                id="businessAddress"
+                                rows="3"
+                                placeholder="Enter business address"
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+
+                        <i data-lucide="save"></i>
+
+                        Save Business Information
+
+                    </button>
+
+
+                </form>
+
+            </section>
+
+
+
+            <!-- ==============================
+                 BUSINESS HOURS
+            =============================== -->
+
+            <section class="settings-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Business Hours
+                        </h2>
+
+                        <p>
+                            Set your regular working hours.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hours-list">
+
+
+                    <div class="hours-row">
+
+                        <strong>
+                            Monday
+                        </strong>
+
+                        <input
+                            type="time"
+                            id="mondayOpen"
+                            value="09:00"
+                        >
+
+                        <span>
+                            to
+                        </span>
+
+                        <input
+                            type="time"
+                            id="mondayClose"
+                            value="18:00"
+                        >
+
+                    </div>
+
+
+
+                    <div class="hours-row">
+
+                        <strong>
+                            Tuesday
+                        </strong>
+
+                        <input
+                            type="time"
+                            id="tuesdayOpen"
+                            value="09:00"
+                        >
+
+                        <span>
+                            to
+                        </span>
+
+                        <input
+                            type="time"
+                            id="tuesdayClose"
+                            value="18:00"
+                        >
+
+                    </div>
+
+
+
+                    <div class="hours-row">
+
+                        <strong>
+                            Wednesday
+                        </strong>
+
+                        <input
+                            type="time"
+                            id="wednesdayOpen"
+                            value="09:00"
+                        >
+
+                        <span>
+                            to
+                        </span>
+
+                        <input
+                            type="time"
+                            id="wednesdayClose"
+                            value="18:00"
+                        >
+
+                    </div>
+
+
+
+                    <div class="hours-row">
+
+                        <strong>
+                            Thursday
+                        </strong>
+
+                        <input
+                            type="time"
+                            id="thursdayOpen"
+                            value="09:00"
+                        >
+
+                        <span>
+                            to
+                        </span>
+
+                        <input
+                            type="time"
+                            id="thursdayClose"
+                            value="18:00"
+                        >
+
+                    </div>
+
+
+
+                    <div class="hours-row">
+
+                        <strong>
+                            Friday
+                        </strong>
+
+                        <input
+                            type="time"
+                            id="fridayOpen"
+                            value="09:00"
+                        >
+
+                        <span>
+                            to
+                        </span>
+
+                        <input
+                            type="time"
+                            id="fridayClose"
+                            value="18:00"
+                        >
+
+                    </div>
+
+
+
+                    <div class="hours-row">
+
+                        <strong>
+                            Saturday
+                        </strong>
+
+                        <input
+                            type="time"
+                            id="saturdayOpen"
+                            value="09:00"
+                        >
+
+                        <span>
+                            to
+                        </span>
+
+                        <input
+                            type="time"
+                            id="saturdayClose"
+                            value="14:00"
+                        >
+
+                    </div>
+
+
+
+                    <div class="hours-row closed">
+
+                        <strong>
+                            Sunday
+                        </strong>
+
+                        <span class="closed-label">
+                            Closed
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="save-button"
+                    onclick="saveBusinessHours()"
+                >
+
+                    <i data-lucide="clock"></i>
+
+                    Save Business Hours
+
+                </button>
+
+            </section>
+
+
+
+            <!-- ==============================
+                 NOTIFICATIONS
+            =============================== -->
+
+            <section class="settings-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Notifications
+                        </h2>
+
+                        <p>
+                            Manage appointment notifications.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <label class="toggle-row">
+
+                    <div>
+
+                        <strong>
+                            Appointment Confirmation
+                        </strong>
+
+                        <span>
+                            Receive notifications when an appointment is confirmed.
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="checkbox"
+                        id="confirmationNotification"
+                        checked
+                    >
+
+                </label>
+
+
+
+                <label class="toggle-row">
+
+                    <div>
+
+                        <strong>
+                            Appointment Cancellation
+                        </strong>
+
+                        <span>
+                            Receive notifications when an appointment is cancelled.
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="checkbox"
+                        id="cancellationNotification"
+                        checked
+                    >
+
+                </label>
+
+
+
+                <label class="toggle-row">
+
+                    <div>
+
+                        <strong>
+                            Appointment Completion
+                        </strong>
+
+                        <span>
+                            Receive notifications when an appointment is completed.
+                        </span>
+
+                    </div>
+
+                    <input
+                        type="checkbox"
+                        id="completionNotification"
+                        checked
+                    >
+
+                </label>
+
+
+            </section>
+
+
+
+            <!-- ==============================
+                 SAVE MESSAGE
+            =============================== -->
+
+            <div
+                id="saveMessage"
+                class="save-message"
+            ></div>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<script>
+
+lucide.createIcons();
+
+
+// ======================================
+// LOAD SETTINGS
+// ======================================
+
+function loadSettings() {
+
+    const settings =
+        JSON.parse(
+            localStorage.getItem(
+                "businesshub_settings"
+            )
+        ) || {};
+
+
+    document.getElementById(
+        "businessName"
+    ).value =
+        settings.businessName || "";
+
+
+    document.getElementById(
+        "businessPhone"
+    ).value =
+        settings.businessPhone || "";
+
+
+    document.getElementById(
+        "businessEmail"
+    ).value =
+        settings.businessEmail || "";
+
+
+    document.getElementById(
+        "businessWebsite"
+    ).value =
+        settings.businessWebsite || "";
+
+
+    document.getElementById(
+        "businessAddress"
+    ).value =
+        settings.businessAddress || "";
+
+
+    const notifications =
+        settings.notifications || {};
+
+
+    document.getElementById(
+        "confirmationNotification"
+    ).checked =
+        notifications.confirmation !== false;
+
+
+    document.getElementById(
+        "cancellationNotification"
+    ).checked =
+        notifications.cancellation !== false;
+
+
+    document.getElementById(
+        "completionNotification"
+    ).checked =
+        notifications.completion !== false;
+
+}
+
+
+// ======================================
+// SAVE BUSINESS INFORMATION
+// ======================================
+
+document.getElementById(
+    "businessSettingsForm"
+).addEventListener(
+    "submit",
+    function(event) {
+
+        event.preventDefault();
+
+
+        const settings =
+            JSON.parse(
+                localStorage.getItem(
+                    "businesshub_settings"
+                )
+            ) || {};
+
+
+        settings.businessName =
+            document.getElementById(
+                "businessName"
+            ).value.trim();
+
+
+        settings.businessPhone =
+            document.getElementById(
+                "businessPhone"
+            ).value.trim();
+
+
+        settings.businessEmail =
+            document.getElementById(
+                "businessEmail"
+            ).value.trim();
+
+
+        settings.businessWebsite =
+            document.getElementById(
+                "businessWebsite"
+            ).value.trim();
+
+
+        settings.businessAddress =
+            document.getElementById(
+                "businessAddress"
+            ).value.trim();
+
+
+        saveSettings(settings);
+
+
+        showSaveMessage(
+            "Business information saved successfully!"
+        );
+
+    }
+);
+
+
+// ======================================
+// SAVE BUSINESS HOURS
+// ======================================
+
+function saveBusinessHours() {
+
+    const settings =
+        JSON.parse(
+            localStorage.getItem(
+                "businesshub_settings"
+            )
+        ) || {};
+
+
+    settings.businessHours = {
+
+        monday: {
+            open:
+                document.getElementById(
+                    "mondayOpen"
+                ).value,
+
+            close:
+                document.getElementById(
+                    "mondayClose"
+                ).value
+        },
+
+        tuesday: {
+            open:
+                document.getElementById(
+                    "tuesdayOpen"
+                ).value,
+
+            close:
+                document.getElementById(
+                    "tuesdayClose"
+                ).value
+        },
+
+        wednesday: {
+            open:
+                document.getElementById(
+                    "wednesdayOpen"
+                ).value,
+
+            close:
+                document.getElementById(
+                    "wednesdayClose"
+                ).value
+        },
+
+        thursday: {
+            open:
+                document.getElementById(
+                    "thursdayOpen"
+                ).value,
+
+            close:
+                document.getElementById(
+                    "thursdayClose"
+                ).value
+        },
+
+        friday: {
+            open:
+                document.getElementById(
+                    "fridayOpen"
+                ).value,
+
+            close:
+                document.getElementById(
+                    "fridayClose"
+                ).value
+        },
+
+        saturday: {
+            open:
+                document.getElementById(
+                    "saturdayOpen"
+                ).value,
+
+            close:
+                document.getElementById(
+                    "saturdayClose"
+                ).value
+        },
+
+        sunday: {
+            closed: true
+        }
+
+    };
+
+
+    saveSettings(settings);
+
+
+    showSaveMessage(
+        "Business hours saved successfully!"
+    );
+
+}
+
+
+// ======================================
+// SAVE SETTINGS
+// ======================================
+
+function saveSettings(settings) {
+
+    // Notifications
+
+    settings.notifications = {
+
+        confirmation:
+            document.getElementById(
+                "confirmationNotification"
+            ).checked,
+
+        cancellation:
+            document.getElementById(
+                "cancellationNotification"
+            ).checked,
+
+        completion:
+            document.getElementById(
+                "completionNotification"
+            ).checked
+
+    };
+
+
+    // ======================================
+    // BUSINESS HOURS
+    // ======================================
+
+    settings.businessHours = {
+
+        monday: {
+            open:
+                document.getElementById(
+                    "mondayOpen"
+                ).value,
+
+            close:
+                document.getElementById(
+                    "mondayClose"
+                ).value,
+
+            closed: false
+        },
+
+
+        tuesday: {
+            open:
+                document.getElementById(
+                    "tuesdayOpen"
+                ).value,
+
+            close:
+                document.getElementById(
+                    "tuesdayClose"
+                ).value,
+
+            closed: false
+        },
+
+
+        wednesday: {
+            open:
+                document.getElementById(
+                    "wednesdayOpen"
+                ).value,
+
+            close:
+                document.getElementById(
+                    "wednesdayClose"
+                ).value,
+
+            closed: false
+        },
+
+
+        thursday: {
+            open:
+                document.getElementById(
+                    "thursdayOpen"
+                ).value,
+
+            close:
+                document.getElementById(
+                    "thursdayClose"
+                ).value,
+
+            closed: false
+        },
+
+
+        friday: {
+            open:
+                document.getElementById(
+                    "fridayOpen"
+                ).value,
+
+            close:
+                document.getElementById(
+                    "fridayClose"
+                ).value,
+
+            closed: false
+        },
+
+
+        saturday: {
+            open:
+                document.getElementById(
+                    "saturdayOpen"
+                ).value,
+
+            close:
+                document.getElementById(
+                    "saturdayClose"
+                ).value,
+
+            closed: false
+        },
+
+
+        sunday: {
+            open: "",
+            close: "",
+            closed: true
+        }
+
+    };
+
+
+    // ======================================
+    // SAVE TO LOCAL STORAGE
+    // ======================================
+
+    localStorage.setItem(
+        "businesshub_settings",
+        JSON.stringify(settings)
+    );
+
+}
+
+
+// ======================================
+// SAVE NOTIFICATION SETTINGS
+// ======================================
+
+document.querySelectorAll(
+    ".toggle-row input"
+).forEach(
+    function(toggle) {
+
+        toggle.addEventListener(
+            "change",
+            function() {
+
+                const settings =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "businesshub_settings"
+                        )
+                    ) || {};
+
+
+                saveSettings(settings);
+
+            }
+        );
+
+    }
+);
+
+
+// ======================================
+// SAVE MESSAGE
+// ======================================
+
+function showSaveMessage(message) {
+
+    const saveMessage =
+        document.getElementById(
+            "saveMessage"
+        );
+
+
+    saveMessage.textContent =
+        message;
+
+
+    saveMessage.classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        function() {
+
+            saveMessage.classList.remove(
+                "show"
+            );
+
+        },
+        3000
+    );
+
+}
+
+
+// ======================================
+// START
+// ======================================
+
+loadSettings();
+
+</script>
+
+
+</body>
+
+</html>
+

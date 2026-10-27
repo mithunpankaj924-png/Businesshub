@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f7f3;
+    color: #1f2d24;
+}
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+    background: #ffffff;
+    padding: 35px 40px;
+}
+
+
+
+.brand {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.businesshub-logo {
+    width: 280px;
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+
+.brand h1 {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.brand p {
+    margin-top: 7px;
+    color: #66806d;
+    font-size: 14px;
+}
+
+.welcome {
+    margin-bottom: 28px;
+}
+
+.welcome h2 {
+    font-size: 23px;
+    margin-bottom: 7px;
+}
+
+.welcome p {
+    color: #718078;
+    font-size: 14px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 15px;
+
+    border: 1px solid #d8e2da;
+    border-radius: 12px;
+
+    font-size: 14px;
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.input-group input:focus {
+    border-color: #4d8b5b;
+    box-shadow: 0 0 0 3px #e6f2e8;
+}
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 5px 0 25px;
+
+    font-size: 13px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #68766d;
+}
+
+.forgot {
+    color: #397047;
+    text-decoration: none;
+}
+
+.login-button {
+    width: 100%;
+    padding: 14px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #397047;
+    color: white;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.login-button:hover {
+    background: #2f5e3b;
+    transform: translateY(-1px);
+}
+
+.create-account {
+    text-align: center;
+    margin-top: 25px;
+
+    font-size: 13px;
+    color: #718078;
+}
+
+.create-account a {
+    display: inline-block;
+    margin-top: 6px;
+
+    color: #397047;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.eco-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+
+    margin-top: 30px;
+    padding-top: 20px;
+
+    border-top: 1px solid #edf1ed;
+
+    color: #7a887f;
+    font-size: 11px;
+    text-align: center;
+}
+
+.eco-message span {
+    font-size: 15px;
+}

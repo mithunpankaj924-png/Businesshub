@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BusinessHub | Customers</title>
+
+    <link rel="stylesheet" href="customer.css">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+
+<body>
+
+    <!-- ======================================
+     CUSTOMER DETAILS MODAL
+====================================== -->
+
+<div
+    class="customer-modal"
+    id="customerDetailsModal"
+>
+
+    <div class="customer-modal-content">
+
+        <button
+            class="customer-modal-close"
+            id="closeCustomerModal"
+        >
+            ×
+        </button>
+
+
+        <div
+            id="customerDetailsContent"
+        >
+
+            <!-- Customer details will appear here -->
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+    <div class="customers-page">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <img
+                    src="./images/company logo.png"
+                    alt="BusinessHub Logo"
+                >
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="dashboard.html" class="nav-item">
+                    <i data-lucide="layout-dashboard"></i>
+                    Dashboard
+                </a>
+
+                <a href="customers.html" class="nav-item active">
+                    <i data-lucide="users"></i>
+                    Customers
+                </a>
+
+                <a href="./appointments.html" class="nav-item">
+                    <i data-lucide="calendar-check"></i>
+                    Appointments
+                </a>
+
+                <a href="./calender.html" class="nav-item">
+                    <i data-lucide="calendar-days"></i>
+                    Calendar
+                </a>
+
+                <a href="./staff.html" class="nav-item">
+                    <i data-lucide="user-round"></i>
+                    Staff
+                </a>
+
+                <a href="./service.html" class="nav-item">
+                    <i data-lucide="sparkles"></i>
+                    Services
+                </a>
+
+                <a href="#" class="nav-item">
+                    <i data-lucide="bar-chart-3"></i>
+                    Reports
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <a href="#" class="nav-item">
+                    <i data-lucide="settings"></i>
+                    Settings
+                </a>
+
+                <a href="index.html" class="nav-item">
+                    <i data-lucide="log-out"></i>
+                    Sign out
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Topbar -->
+            <header class="topbar">
+
+                <div class="search-box">
+                    <i data-lucide="search"></i>
+
+                    <input
+                        type="text"
+                        id="customerSearch"
+                        placeholder="Search customers..."
+                    >
+                </div>
+
+                <div class="owner-section">
+
+                    <button class="notification">
+                        <i data-lucide="bell"></i>
+                    </button>
+
+                    <div class="owner-info">
+                        <strong>Owner</strong>
+                        <small>Business Owner</small>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- Customers Content -->
+            <section class="content">
+
+                <div class="page-heading">
+
+                    <div>
+                        <h1>Customers</h1>
+
+                        <p>
+                            Manage your customer information and history.
+                        </p>
+                    </div>
+
+                    <button class="add-customer-button" id="addCustomerBtn">
+                        <i data-lucide="plus"></i>
+                        Add Customer
+                    </button>
+
+                </div>
+
+
+                <!-- Customer Summary -->
+                <div class="customer-summary">
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+
+                        <div>
+                            <span>Total Customers</span>
+                            <strong>48</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            <i data-lucide="user-plus"></i>
+                        </div>
+
+                        <div>
+                            <span>New This Month</span>
+                            <strong>8</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            <i data-lucide="calendar-check"></i>
+                        </div>
+
+                        <div>
+                            <span>Returning Customers</span>
+                            <strong>31</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Customer Table -->
+                <section class="customers-card">
+
+                    <div class="table-header">
+
+                        <div>
+                            <h2>All Customers</h2>
+                            <p>Your customer directory</p>
+                        </div>
+
+                        <div class="table-search">
+
+                            <i data-lucide="search"></i>
+
+                            <input
+                                type="text"
+                                id="tableSearch"
+                                placeholder="Search by name or phone"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Phone</th>
+                                    <th>Last Visit</th>
+                                    <th>Appointments</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="customerTable">
+
+                                <tr>
+                                    <td>
+                                        <div class="customer-name">
+                                            <div class="avatar">J</div>
+
+                                            <div>
+                                                <strong>John</strong>
+                                                <span>john@example.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>98765 43210</td>
+
+                                    <td>15 Aug 2026</td>
+
+                                    <td>6</td>
+
+                                    <td>
+                                        <span class="status active-status">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button class="view-button">
+                                            View
+                                        </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>
+                                        <div class="customer-name">
+                                            <div class="avatar">P</div>
+
+                                            <div>
+                                                <strong>Priya</strong>
+                                                <span>priya@example.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>87654 32109</td>
+
+                                    <td>14 Aug 2026</td>
+
+                                    <td>4</td>
+
+                                    <td>
+                                        <span class="status active-status">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button class="view-button">
+                                            View
+                                        </button>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>
+                                        <div class="customer-name">
+                                            <div class="avatar">R</div>
+
+                                            <div>
+                                                <strong>Rahul</strong>
+                                                <span>rahul@example.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>76543 21098</td>
+
+                                    <td>12 Aug 2026</td>
+
+                                    <td>2</td>
+
+                                    <td>
+                                        <span class="status active-status">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button class="view-button">
+                                            View
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Add Customer Modal -->
+
+<div class="modal-overlay" id="customerModal">
+
+    <div class="customer-form-modal">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Add Customer</h2>
+                <p>Create a new customer profile.</p>
+            </div>
+
+            <button class="close-modal" id="closeCustomerModal">
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
+
+
+        <form id="customerForm">
+
+            <div class="form-group">
+
+                <label for="customerName">
+                    Customer name
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Enter customer name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="customerPhone">
+                    Phone number
+                </label>
+
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="Enter phone number"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="customerEmail">
+                    Email
+                    <span>Optional</span>
+                </label>
+
+                <input
+                    type="email"
+                    id="customerEmail"
+                    placeholder="Enter email address"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="customerNotes">
+                    Notes
+                    <span>Optional</span>
+                </label>
+
+                <textarea
+                    id="customerNotes"
+                    rows="4"
+                    placeholder="Add any useful notes about this customer..."
+                ></textarea>
+
+            </div>
+
+//add the customer//
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-button"
+                    id="cancelCustomer"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-customer-button"
+                >
+                    Save Customer
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+   <script type="module">
+
+    import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
+    collection,
+    addDoc,
+    getDocs
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+import {
+    auth,
+    db
+} from "./firebase-config.js";
+    lucide.createIcons();
+
+    const addCustomerBtn =
+        document.getElementById("addCustomerBtn");
+
+    const customerModal =
+        document.getElementById("customerModal");
+
+    const closeCustomerModal =
+        document.getElementById("closeCustomerModal");
+
+    const cancelCustomer =
+        document.getElementById("cancelCustomer");
+
+    const customerForm =
+        document.getElementById("customerForm");
+
+    const customerTable =
+        document.getElementById("customerTable");
+
+        let editingCustomerId = null;
+
+
+    // Open modal
+   addCustomerBtn.addEventListener("click", function () {
+
+    editingCustomerId = null;
+
+    customerForm.reset();
+
+    customerModal.classList.add("show");
+
+});
+
+
+    // Close modal
+    closeCustomerModal.addEventListener("click", function () {
+        customerModal.classList.remove("show");
+    });
+
+
+    cancelCustomer.addEventListener("click", function () {
+        customerModal.classList.remove("show");
+    });
+
+
+    // Close when clicking outside
+    customerModal.addEventListener("click", function (event) {
+
+        if (event.target === customerModal) {
+            customerModal.classList.remove("show");
+        }
+
+    });
+
+
+// ======================================
+// SAVE CUSTOMER TO FIRESTORE
+// ======================================
+
+customerForm.addEventListener(
+    "submit",
+    async function (event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById(
+                "customerName"
+            ).value.trim();
+
+        const phone =
+            document.getElementById(
+                "customerPhone"
+            ).value.trim();
+
+        const email =
+            document.getElementById(
+                "customerEmail"
+            ).value.trim();
+
+        const notes =
+            document.getElementById(
+                "customerNotes"
+            ).value.trim();
+
+
+        // Check logged-in user
+        const user = auth.currentUser;
+
+        if (!user) {
+
+            alert(
+                "Please sign in before adding a customer."
+            );
+
+            return;
+        }
+
+
+        try {
+
+            // ==================================
+            // BUSINESS-SPECIFIC CUSTOMER PATH
+            // ==================================
+
+            const customersRef =
+                collection(
+                    db,
+                    "businesses",
+                    user.uid,
+                    "customers"
+                );
+
+
+            // ==================================
+            // SAVE CUSTOMER
+            // ==================================
+
+            const customerData = {
+
+                name: name,
+
+                phone: phone,
+
+                email: email,
+
+                notes: notes,
+
+                createdAt:
+                    new Date().toISOString(),
+
+                appointments: 0
+
+            };
+
+
+            await addDoc(
+                customersRef,
+                customerData
+            );
+
+
+            // ==================================
+            // SUCCESS
+            // ==================================
+
+            alert(
+                "Customer saved successfully!"
+            );
+
+
+            customerForm.reset();
+
+            customerModal.classList.remove(
+                "show"
+            );
+
+
+            // Refresh table
+            customerTable.innerHTML = "";
+
+            loadCustomers();
+
+
+        } catch (error) {
+
+            console.error(
+                "Error saving customer:",
+                error
+            );
+
+            alert(
+                "Unable to save customer. Please try again."
+            );
+
+        }
+
+    }
+);
+
+
+
+
+
+    
+
+
+    // Add customer to table
+    function addCustomerToTable(customer) {
+
+        const firstLetter =
+            customer.name.charAt(0).toUpperCase();
+
+
+        const row = document.createElement("tr");
+
+
+        row.innerHTML = `
+            <td>
+                <div class="customer-name">
+
+                    <div class="avatar">
+                        ${firstLetter}
+                    </div>
+
+                    <div>
+                        <strong>${customer.name}</strong>
+                        <span>
+                            ${customer.email || "No email"}
+                        </span>
+                    </div>
+
+                </div>
+            </td>
+
+            <td>
+                ${customer.phone}
+            </td>
+
+            <td>
+                ${customer.date}
+            </td>
+
+            <td>
+                0
+            </td>
+
+            <td>
+                <span class="status active-status">
+                    Active
+                </span>
+            </td>
+
+            <td>
+              <button
+    class="view-button"
+    onclick="viewCustomer('${customer.id}')"
+>
+    View
+</button>
+            </td>
+        `;
+
+
+        customerTable.appendChild(row);
+    }
+
+
+    // Load saved customers when page opens
+ // ======================================
+// LOAD CUSTOMERS FROM FIRESTORE
+// ======================================
+
+async function loadCustomers() {
+
+    const user = auth.currentUser;
+
+    // No logged-in business
+    if (!user) {
+        console.log("No user logged in.");
+        return;
+    }
+
+    try {
+
+        const customersRef =
+            collection(
+                db,
+                "businesses",
+                user.uid,
+                "customers"
+            );
+
+        const customersSnapshot =
+            await getDocs(customersRef);
+
+        customerTable.innerHTML = "";
+
+        customersSnapshot.forEach(function(docSnapshot) {
+
+            const customer = {
+                id: docSnapshot.id,
+                ...docSnapshot.data()
+            };
+
+            addCustomerToTable(customer);
+
+        });
+
+        console.log(
+            "Customers loaded:",
+            customersSnapshot.size
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Error loading customers:",
+            error
+        );
+
+    }
+}
+
+
+    loadCustomers();
+
+
+    // ======================================
+// WAIT FOR FIREBASE LOGIN
+// ======================================
+
+onAuthStateChanged(auth, function(user) {
+
+    if (user) {
+
+        console.log(
+            "Logged in user:",
+            user.uid
+        );
+
+        loadCustomers();
+
+    } else {
+
+        console.log(
+            "No user logged in."
+        );
+
+    }
+
+});
+
+
+    // ======================================
+// VIEW CUSTOMER
+// ======================================
+
+// ======================================
+// VIEW CUSTOMER DETAILS
+// ======================================
+
+
+function viewCustomer(customerId) {
+    const customers =
+        JSON.parse(
+            localStorage.getItem(
+                "businesshub_customers"
+            )
+        ) || [];
+
+
+    const customer =
+        customers.find(function(item) {
+
+            return String(item.id) ===
+                   String(customerId);
+
+        });
+
+
+    if (!customer) {
+
+        alert("Customer not found.");
+
+        return;
+
+    }
+
+  
+
+    const appointments =
+        JSON.parse(
+            localStorage.getItem(
+                "businesshub_appointments"
+            )
+        ) || [];
+
+
+    const customerAppointments =
+        appointments.filter(function(appointment) {
+
+            return String(
+                appointment.customerId
+            ) === String(customer.id);
+
+        });
+
+
+    const totalBookings =
+        customerAppointments.length;
+
+
+    const totalSpent =
+        customerAppointments.reduce(
+            function(total, appointment) {
+
+                if (
+                    appointment.status !==
+                    "Cancelled"
+                ) {
+
+                    return total +
+                        Number(
+                            appointment.price
+                        );
+
+                }
+
+                return total;
+
+            },
+            0
+        );
+
+
+    const content =
+        document.getElementById(
+            "customerDetailsContent"
+        );
+
+
+    content.innerHTML = `
+
+        <div class="customer-details-header">
+
+            <h2>
+                ${customer.name}
+            </h2>
+
+            <p>
+                ${customer.phone}
+                •
+                ${customer.email || "No email"}
+            </p>
+
+            <p>
+    ${customer.phone}
+    •
+    ${customer.email || "No email"}
+</p>
+
+<div class="customer-action-buttons">
+
+    <button
+        class="edit-customer-button"
+        onclick="editCustomer('${customer.id}')"
+    >
+        Edit Customer
+    </button>
+
+    <button
+        class="delete-customer-button"
+        onclick="deleteCustomer('${customer.id}')"
+    >
+        Delete Customer
+    </button>
+
+</div>
+
+</div>
+
+        </div>
+
+
+        <div class="customer-details-stats">
+
+            <div class="customer-stat">
+
+                <span>
+                    Total Bookings
+                </span>
+
+                <strong>
+                    ${totalBookings}
+                </strong>
+
+            </div>
+
+
+            <div class="customer-stat">
+
+                <span>
+                    Total Spent
+                </span>
+
+                <strong>
+                    ₹${totalSpent}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="customer-appointments">
+
+            <h3>
+                Appointment History
+            </h3>
+
+            ${
+                customerAppointments.length === 0
+
+                    ? `
+                        <div class="customer-empty">
+                            No appointments yet.
+                        </div>
+                      `
+
+                    : customerAppointments
+                        .slice()
+                        .sort(function(a, b) {
+
+                            return b.id - a.id;
+
+                        })
+                        .map(function(appointment) {
+
+                            return `
+
+                                <div class="customer-appointment">
+
+                                    <div class="customer-appointment-top">
+
+                                        <strong>
+                                            ${appointment.service}
+                                        </strong>
+
+                                        <span class="status ${getStatusClass(appointment.status)}">
+                                            ${appointment.status}
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="customer-appointment-info">
+
+                                        📅 ${appointment.date}
+
+                                        •
+                                        
+                                        ${appointment.time}
+
+                                        <br>
+
+                                        👤 ${appointment.staff}
+
+                                        •
+                                        
+                                        ${appointment.duration} minutes
+
+                                        <br>
+
+                                        💰 ₹${appointment.price}
+
+                                    </div>
+
+                                </div>
+
+                            `;
+
+                        })
+                        .join("")
+            }
+
+        </div>
+
+    `;
+
+
+    document.getElementById(
+        "customerDetailsModal"
+    ).classList.add("show");
+
+}
+
+
+// ======================================
+// EDIT CUSTOMER
+// ======================================
+
+function editCustomer(customerId) {
+
+    const customers =
+        JSON.parse(
+            localStorage.getItem(
+                "businesshub_customers"
+            )
+        ) || [];
+
+    const customer =
+        customers.find(function(item) {
+
+            return String(item.id) ===
+                   String(customerId);
+
+        });
+
+    if (!customer) {
+
+        alert("Customer not found.");
+
+        return;
+
+    }
+
+
+    editingCustomerId = customer.id;
+
+    // Fill the existing customer form
+
+    document.getElementById(
+        "customerName"
+    ).value = customer.name;
+
+    document.getElementById(
+        "customerPhone"
+    ).value = customer.phone;
+
+    document.getElementById(
+        "customerEmail"
+    ).value = customer.email || "";
+
+    document.getElementById(
+        "customerNotes"
+    ).value = customer.notes || "";
+
+
+    // Close customer details
+
+    document.getElementById(
+        "customerDetailsModal"
+    ).classList.remove("show");
+
+
+    // Open existing Add Customer form
+
+    customerModal.classList.add("show");
+
+}
+
+</script>
+<script type="module" src="customer.js"></script>
+
+</body>
+</html>

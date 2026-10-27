@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>BusinessHub | Staff</title>
+
+    <link
+        rel="stylesheet"
+        href="staff.css"
+    >
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+
+
+<body>
+
+<div class="staff-page">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <img
+                src="./images/company logo.png"
+                alt="BusinessHub Logo"
+            >
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="nav-item">
+                <i data-lucide="layout-dashboard"></i>
+                Dashboard
+            </a>
+
+
+            <a href="customer.html" class="nav-item">
+                <i data-lucide="users"></i>
+                Customers
+            </a>
+
+
+            <a href="appointment.html" class="nav-item">
+                <i data-lucide="calendar-check"></i>
+                Appointments
+            </a>
+
+
+            <a href="calender.html" class="nav-item">
+                <i data-lucide="calendar-days"></i>
+                Calendar
+            </a>
+
+
+            <a href="staff.html" class="nav-item active">
+                <i data-lucide="user-round"></i>
+                Staff
+            </a>
+
+
+            <a href="service.html" class="nav-item">
+                <i data-lucide="sparkles"></i>
+                Services
+            </a>
+
+
+            <a href="./reports.html" class="nav-item">
+                <i data-lucide="bar-chart-3"></i>
+                Reports
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="./service.html" class="nav-item">
+                <i data-lucide="settings"></i>
+                Settings
+            </a>
+
+
+            <a href="index.html" class="nav-item">
+                <i data-lucide="log-out"></i>
+                Sign out
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="search-box">
+
+                <i data-lucide="search"></i>
+
+                <input
+                    type="text"
+                    id="staffSearch"
+                    placeholder="Search staff..."
+                >
+
+            </div>
+
+
+            <div class="owner-section">
+
+                <button class="notification">
+                    <i data-lucide="bell"></i>
+                </button>
+
+
+                <div class="owner-info">
+
+                    <strong>Owner</strong>
+
+                    <small>Business Owner</small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- CONTENT -->
+
+        <section class="content">
+
+
+            <!-- PAGE HEADING -->
+
+            <div class="page-heading">
+
+                <div>
+
+                    <h1>Staff</h1>
+
+                    <p>
+                        Manage your service providers and staff.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="add-button"
+                    id="addStaffButton"
+                >
+
+                    <i data-lucide="plus"></i>
+
+                    Add Staff
+
+                </button>
+
+            </div>
+
+
+
+            <!-- STATISTICS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Staff</span>
+                        <strong id="totalStaff">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i data-lucide="user-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Active Staff</span>
+                        <strong id="activeStaff">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i data-lucide="calendar-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Today's Appointments</span>
+                        <strong id="staffAppointments">0</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- STAFF LIST -->
+
+            <section class="staff-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>All Staff</h2>
+
+                        <p>
+                            Your business service providers
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="staff-list"
+                    id="staffList"
+                ></div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<!-- ADD STAFF MODAL -->
+
+<div
+    class="modal"
+    id="staffModal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2>Add Staff Member</h2>
+
+                <p>
+                    Add a new service provider.
+                </p>
+
+            </div>
+
+
+            <button
+                class="close-button"
+                id="closeStaffModal"
+            >
+
+                <i data-lucide="x"></i>
+
+            </button>
+
+        </div>
+
+
+        <form id="staffForm">
+
+
+            <div class="form-group">
+
+                <label>
+                    Staff Name
+                </label>
+
+                <input
+                    type="text"
+                    id="staffName"
+                    placeholder="Enter staff name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>
+                        Phone
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="staffPhone"
+                        placeholder="Enter phone number"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Role
+                    </label>
+
+                    <select id="staffRole" required>
+
+                        <option value="">
+                            Select role
+                        </option>
+
+                        <option value="Service Provider">
+                            Service Provider
+                        </option>
+
+                        <option value="Therapist">
+                            Therapist
+                        </option>
+
+                        <option value="Receptionist">
+                            Receptionist
+                        </option>
+
+                        <option value="Manager">
+                            Manager
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Services
+                </label>
+
+                <input
+                    type="text"
+                    id="staffServices"
+                    placeholder="Example: Abhyanga, Shirodhara"
+                >
+
+                <small>
+                    Separate multiple services with commas.
+                </small>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="staffEmail"
+                    placeholder="Enter email address"
+                >
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-button"
+                    id="cancelStaff"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="save-button"
+                >
+                    Save Staff
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+lucide.createIcons();
+
+
+// ============================
+// ELEMENTS
+// ============================
+
+const addStaffButton =
+    document.getElementById("addStaffButton");
+
+const staffModal =
+    document.getElementById("staffModal");
+
+const closeStaffModal =
+    document.getElementById("closeStaffModal");
+
+const cancelStaff =
+    document.getElementById("cancelStaff");
+
+const staffForm =
+    document.getElementById("staffForm");
+
+const staffList =
+    document.getElementById("staffList");
+
+const staffSearch =
+    document.getElementById("staffSearch");
+
+
+// ============================
+// OPEN MODAL
+// ============================
+
+addStaffButton.addEventListener(
+    "click",
+    function () {
+
+        staffModal.classList.add("show");
+
+        document
+            .getElementById("staffName")
+            .focus();
+
+    }
+);
+
+
+// ============================
+// CLOSE MODAL
+// ============================
+
+function closeModal() {
+
+    staffModal.classList.remove("show");
+
+    staffForm.reset();
+
+}
+
+
+closeStaffModal.addEventListener(
+    "click",
+    closeModal
+);
+
+
+cancelStaff.addEventListener(
+    "click",
+    closeModal
+);
+
+
+staffModal.addEventListener(
+    "click",
+    function (event) {
+
+        if (
+            event.target === staffModal
+        ) {
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+// ============================
+// GET STAFF
+// ============================
+
+function getStaff() {
+
+    return JSON.parse(
+        localStorage.getItem(
+            "businesshub_staff"
+        )
+    ) || [];
+
+}
+
+
+// ============================
+// SAVE STAFF
+// ============================
+
+staffForm.addEventListener(
+    "submit",
+    function (event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document
+                .getElementById("staffName")
+                .value
+                .trim();
+
+
+        const phone =
+            document
+                .getElementById("staffPhone")
+                .value
+                .trim();
+
+
+        const role =
+            document
+                .getElementById("staffRole")
+                .value;
+
+
+        const services =
+            document
+                .getElementById("staffServices")
+                .value
+                .trim();
+
+
+        const email =
+            document
+                .getElementById("staffEmail")
+                .value
+                .trim();
+
+
+        const staff =
+            getStaff();
+
+
+        const newStaff = {
+
+            id: Date.now(),
+
+            name: name,
+
+            phone: phone,
+
+            role: role,
+
+            services: services,
+
+            email: email,
+
+            status: "Active"
+
+        };
+
+
+        staff.push(newStaff);
+
+
+        localStorage.setItem(
+            "businesshub_staff",
+            JSON.stringify(staff)
+        );
+
+
+        closeModal();
+
+
+        loadStaff();
+
+
+        alert(
+            "Staff member added successfully!"
+        );
+
+    }
+);
+
+
+// ============================
+// LOAD STAFF
+// ============================
+
+function loadStaff() {
+
+    const staff =
+        getStaff();
+
+
+    staffList.innerHTML = "";
+
+
+    if (
+        staff.length === 0
+    ) {
+
+        staffList.innerHTML = `
+
+            <div class="empty-staff">
+
+                <i data-lucide="users"></i>
+
+                <h3>
+                    No staff members yet
+                </h3>
+
+                <p>
+                    Add your first staff member
+                    to get started.
+                </p>
+
+            </div>
+
+        `;
+
+        updateStats();
+
+        lucide.createIcons();
+
+        return;
+
+    }
+
+
+    staff.forEach(
+        function (member) {
+
+            createStaffCard(member);
+
+        }
+    );
+
+
+    updateStats();
+
+    lucide.createIcons();
+
+}
+
+
+// ============================
+// CREATE STAFF CARD
+// ============================
+
+function createStaffCard(member) {
+
+    const card =
+        document.createElement("div");
+
+
+    card.className =
+        "staff-row";
+
+
+    const firstLetter =
+        member.name
+            .charAt(0)
+            .toUpperCase();
+
+
+    card.innerHTML = `
+
+        <div class="staff-person">
+
+            <div class="staff-avatar">
+
+                ${firstLetter}
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    ${member.name}
+                </strong>
+
+                <span>
+                    ${member.role}
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="staff-contact">
+
+            <strong>
+                Phone
+            </strong>
+
+            <span>
+                ${member.phone}
+            </span>
+
+        </div>
+
+
+        <div class="staff-services">
+
+            <strong>
+                Services
+            </strong>
+
+            <span>
+                ${member.services || "Not specified"}
+            </span>
+
+        </div>
+
+
+        <div class="staff-status">
+
+            <span class="status active">
+                ${member.status}
+            </span>
+
+        </div>
+
+
+        <div class="staff-actions">
+
+            <button
+                class="view-button"
+                onclick="viewStaff(${member.id})"
+            >
+
+                View
+
+            </button>
+
+        </div>
+
+    `;
+
+
+    staffList.appendChild(card);
+
+}
+
+
+// ============================
+// VIEW STAFF
+// ============================
+
+function viewStaff(id) {
+
+    const staff =
+        getStaff();
+
+
+    const member =
+        staff.find(
+            function (item) {
+
+                return item.id === id;
+
+            }
+        );
+
+
+    if (!member) {
+
+        return;
+
+    }
+
+
+    alert(
+
+        "Staff Details\n\n" +
+
+        "Name: " + member.name + "\n" +
+
+        "Phone: " + member.phone + "\n" +
+
+        "Role: " + member.role + "\n" +
+
+        "Services: " +
+        (member.services || "Not specified") +
+        "\n" +
+
+        "Email: " +
+        (member.email || "Not specified") +
+        "\n" +
+
+        "Status: " + member.status
+
+    );
+
+}
+
+
+// ============================
+// UPDATE STATS
+// ============================
+
+function updateStats() {
+
+    const staff =
+        getStaff();
+
+
+    document.getElementById(
+        "totalStaff"
+    ).textContent =
+        staff.length;
+
+
+    document.getElementById(
+        "activeStaff"
+    ).textContent =
+        staff.filter(
+            function (member) {
+
+                return member.status === "Active";
+
+            }
+        ).length;
+
+
+    const today =
+        new Date();
+
+
+    const todayString =
+        today.getFullYear() +
+        "-" +
+        String(
+            today.getMonth() + 1
+        ).padStart(2, "0") +
+        "-" +
+        String(
+            today.getDate()
+        ).padStart(2, "0");
+
+
+    const appointments =
+        JSON.parse(
+            localStorage.getItem(
+                "businesshub_appointments"
+            )
+        ) || [];
+
+
+    const todayAppointments =
+        appointments.filter(
+            function (appointment) {
+
+                return (
+                    appointment.date ===
+                    todayString
+                );
+
+            }
+        );
+
+
+    document.getElementById(
+        "staffAppointments"
+    ).textContent =
+        todayAppointments.length;
+
+}
+
+
+// ============================
+// SEARCH
+// ============================
+
+staffSearch.addEventListener(
+    "input",
+    function () {
+
+        const search =
+            this.value
+                .toLowerCase()
+                .trim();
+
+
+        const staff =
+            getStaff();
+
+
+        const filtered =
+            staff.filter(
+                function (member) {
+
+                    return (
+
+                        member.name
+                            .toLowerCase()
+                            .includes(search)
+
+                        ||
+
+                        member.phone
+                            .toLowerCase()
+                            .includes(search)
+
+                        ||
+
+                        member.role
+                            .toLowerCase()
+                            .includes(search)
+
+                    );
+
+                }
+            );
+
+
+        staffList.innerHTML = "";
+
+
+        filtered.forEach(
+            function (member) {
+
+                createStaffCard(member);
+
+            }
+        );
+
+
+        if (
+            filtered.length === 0
+        ) {
+
+            staffList.innerHTML = `
+
+                <div class="empty-staff">
+
+                    <i data-lucide="search-x"></i>
+
+                    <h3>
+                        No staff found
+                    </h3>
+
+                    <p>
+                        Try another search.
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+
+        lucide.createIcons();
+
+    }
+);
+
+
+// ============================
+// INITIAL LOAD
+// ============================
+
+loadStaff();
+
+</script>
+
+</body>
+
+</html>

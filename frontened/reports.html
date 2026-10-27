@@ -1,0 +1,1073 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>BusinessHub | Reports</title>
+
+    <link
+        rel="stylesheet"
+        href="reports.css"
+    >
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+
+
+<body>
+
+<div class="dashboard">
+
+
+    <!-- ==============================
+         SIDEBAR
+    =============================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <img
+                src="./images/company logo.png"
+                alt="BusinessHub"
+            >
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="dashboard.html"
+                class="nav-item"
+            >
+
+                <i data-lucide="layout-dashboard"></i>
+
+                Dashboard
+
+            </a>
+
+
+            <a
+                href="customer.html"
+                class="nav-item"
+            >
+
+                <i data-lucide="users"></i>
+
+                Customers
+
+            </a>
+
+
+            <a
+                href="appointments.html"
+                class="nav-item"
+            >
+
+                <i data-lucide="calendar-check"></i>
+
+                Appointments
+
+            </a>
+
+
+            <a
+                href="calender.html"
+                class="nav-item"
+            >
+
+                <i data-lucide="calendar-days"></i>
+
+                Calendar
+
+            </a>
+
+
+            <a
+                href="staff.html"
+                class="nav-item"
+            >
+
+                <i data-lucide="user-round"></i>
+
+                Staff
+
+            </a>
+
+
+            <a
+                href="service.html"
+                class="nav-item"
+            >
+
+                <i data-lucide="sparkles"></i>
+
+                Services
+
+            </a>
+
+
+            <a
+                href="reports.html"
+                class="nav-item active"
+            >
+
+                <i data-lucide="bar-chart-3"></i>
+
+                Reports
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="./setting.html"
+                class="nav-item"
+            >
+
+                <i data-lucide="settings"></i>
+
+                Settings
+
+            </a>
+
+
+            <a
+                href="index.html"
+                class="nav-item logout"
+            >
+
+                <i data-lucide="log-out"></i>
+
+                Sign out
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==============================
+         MAIN CONTENT
+    =============================== -->
+
+    <main class="main-content">
+
+
+        <!-- Topbar -->
+
+        <header class="topbar">
+
+            <div class="search-box">
+
+                <span>⌕</span>
+
+                <input
+                    type="text"
+                    placeholder="Search reports..."
+                >
+
+            </div>
+
+
+            <div class="owner-section">
+
+                <button class="notification">
+                    ♢
+                </button>
+
+
+                <div class="owner-info">
+
+                    <strong>
+                        Owner
+                    </strong>
+
+                    <small>
+                        Business Owner
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- Reports -->
+
+        <section class="reports-content">
+
+
+            
+```html
+<div class="page-header">
+
+    <div>
+
+        <h1>
+            Reports
+        </h1>
+
+        <p>
+            Track your business performance and activity.
+        </p>
+
+    </div>
+
+
+    <div class="report-actions">
+
+        <select
+            id="reportPeriod"
+            onchange="loadReports()"
+        >
+
+            <option value="today">
+                Today
+            </option>
+
+            <option value="week">
+                This Week
+            </option>
+
+            <option value="month">
+                This Month
+            </option>
+
+            <option value="all" selected>
+                All Time
+            </option>
+
+        </select>
+
+
+        <button
+            class="refresh-button"
+            onclick="loadReports()"
+        >
+
+            <i data-lucide="refresh-cw"></i>
+
+            Refresh
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+
+            <!-- ==============================
+                 SUMMARY CARDS
+            =============================== -->
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i data-lucide="calendar-check"></i>
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Total Appointments
+                        </p>
+
+                        <strong id="totalAppointments">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i data-lucide="circle-check"></i>
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Completed
+                        </p>
+
+                        <strong id="completedAppointments">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i data-lucide="circle-x"></i>
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Cancelled
+                        </p>
+
+                        <strong id="cancelledAppointments">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Total Customers
+                        </p>
+
+                        <strong id="totalCustomers">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==============================
+                 PERFORMANCE
+            =============================== -->
+
+            <section class="report-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Appointment Overview
+                        </h2>
+
+                        <p>
+                            Current appointment status
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="overview-grid">
+
+
+                    <div class="overview-item">
+
+                        <span>
+                            Confirmed
+                        </span>
+
+                        <strong id="confirmedAppointments">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="overview-item">
+
+                        <span>
+                            Pending
+                        </span>
+
+                        <strong id="pendingAppointments">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="overview-item">
+
+                        <span>
+                            Completed
+                        </span>
+
+                        <strong id="completedOverview">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="overview-item">
+
+                        <span>
+                            Cancelled
+                        </span>
+
+                        <strong id="cancelledOverview">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==============================
+                 REVENUE
+            =============================== -->
+
+            <section class="report-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Revenue Overview
+                        </h2>
+
+                        <p>
+                            Revenue from completed appointments
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="revenue-box">
+
+                    <span>
+                        Total Revenue
+                    </span>
+
+                    <strong id="totalRevenue">
+                        ₹0
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==============================
+                 SERVICE PERFORMANCE
+            =============================== -->
+
+            <section class="report-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Service Performance
+                        </h2>
+
+                        <p>
+                            Appointments by service
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="service-report-list"
+                    id="serviceReportList"
+                >
+
+                    <p class="no-data">
+                        No service data available.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==============================
+                 STAFF PERFORMANCE
+            =============================== -->
+
+            <section class="report-card">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Staff Performance
+                        </h2>
+
+                        <p>
+                            Appointments handled by service provider
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="staff-report-list"
+                    id="staffReportList"
+                >
+
+                    <p class="no-data">
+                        No staff data available.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<script>
+
+
+// ======================================
+// LUCIDE ICONS
+// ======================================
+
+lucide.createIcons();
+
+
+
+// ======================================
+// LOAD REPORTS
+// ======================================
+
+function loadReports() {
+
+    const appointments =
+        JSON.parse(
+            localStorage.getItem("businesshub_appointments")
+        ) || [];
+
+    const customers =
+        JSON.parse(
+            localStorage.getItem("businesshub_customers")
+        ) || [];
+
+
+    // ======================================
+    // GET SELECTED PERIOD
+    // ======================================
+
+    const period =
+        document.getElementById("reportPeriod").value;
+
+
+    // ======================================
+    // GET TODAY
+    // ======================================
+
+    const today = new Date();
+
+    today.setHours(0, 0, 0, 0);
+
+
+    // ======================================
+    // FILTER APPOINTMENTS
+    // ======================================
+
+    const filteredAppointments =
+        appointments.filter(function(appointment) {
+
+            if (!appointment.date) {
+                return false;
+            }
+
+
+            // Convert appointment date safely
+
+            const appointmentDate =
+                new Date(
+                    appointment.date + "T00:00:00"
+                );
+
+
+            appointmentDate.setHours(0, 0, 0, 0);
+
+
+            // ALL TIME
+
+            if (period === "all") {
+
+                return true;
+
+            }
+
+
+            // TODAY
+
+            if (period === "today") {
+
+                return (
+                    appointmentDate.getTime() ===
+                    today.getTime()
+                );
+
+            }
+
+
+            // THIS WEEK
+
+            if (period === "week") {
+
+                const startOfWeek =
+                    new Date(today);
+
+                const day =
+                    startOfWeek.getDay();
+
+                startOfWeek.setDate(
+                    today.getDate() - day
+                );
+
+                startOfWeek.setHours(0, 0, 0, 0);
+
+
+                const endOfWeek =
+                    new Date(startOfWeek);
+
+                endOfWeek.setDate(
+                    startOfWeek.getDate() + 6
+                );
+
+                endOfWeek.setHours(
+                    23,
+                    59,
+                    59,
+                    999
+                );
+
+
+                return (
+                    appointmentDate >=
+                        startOfWeek &&
+                    appointmentDate <=
+                        endOfWeek
+                );
+
+            }
+
+
+            // THIS MONTH
+
+            if (period === "month") {
+
+                return (
+                    appointmentDate.getFullYear() ===
+                        today.getFullYear()
+                    &&
+                    appointmentDate.getMonth() ===
+                        today.getMonth()
+                );
+
+            }
+
+
+            return true;
+
+        });
+
+
+
+    // ======================================
+    // STATUS COUNTS
+    // ======================================
+
+    const completed =
+        filteredAppointments.filter(
+            function(appointment) {
+
+                return appointment.status ===
+                    "Completed";
+
+            }
+        );
+
+
+    const cancelled =
+        filteredAppointments.filter(
+            function(appointment) {
+
+                return appointment.status ===
+                    "Cancelled";
+
+            }
+        );
+
+
+    const confirmed =
+        filteredAppointments.filter(
+            function(appointment) {
+
+                return appointment.status ===
+                    "Confirmed";
+
+            }
+        );
+
+
+    const pending =
+        filteredAppointments.filter(
+            function(appointment) {
+
+                return appointment.status ===
+                    "Pending";
+
+            }
+        );
+
+
+
+    // ======================================
+    // DISPLAY COUNTS
+    // ======================================
+
+    document.getElementById(
+        "totalAppointments"
+    ).textContent =
+        filteredAppointments.length;
+
+
+    document.getElementById(
+        "completedAppointments"
+    ).textContent =
+        completed.length;
+
+
+    document.getElementById(
+        "cancelledAppointments"
+    ).textContent =
+        cancelled.length;
+
+
+    // Total registered customers stays unchanged
+
+    document.getElementById(
+        "totalCustomers"
+    ).textContent =
+        customers.length;
+
+
+
+    // ======================================
+    // APPOINTMENT OVERVIEW
+    // ======================================
+
+    document.getElementById(
+        "confirmedAppointments"
+    ).textContent =
+        confirmed.length;
+
+
+    document.getElementById(
+        "pendingAppointments"
+    ).textContent =
+        pending.length;
+
+
+    document.getElementById(
+        "completedOverview"
+    ).textContent =
+        completed.length;
+
+
+    document.getElementById(
+        "cancelledOverview"
+    ).textContent =
+        cancelled.length;
+
+
+
+    // ======================================
+    // REVENUE
+    // ======================================
+
+    let revenue = 0;
+
+
+    completed.forEach(
+        function(appointment) {
+
+            revenue +=
+                Number(
+                    appointment.price
+                ) || 0;
+
+        }
+    );
+
+
+    document.getElementById(
+        "totalRevenue"
+    ).textContent =
+        "₹" +
+        revenue.toFixed(2);
+
+
+
+    // ======================================
+    // SERVICE PERFORMANCE
+    // ======================================
+
+    const serviceData = {};
+
+
+    filteredAppointments.forEach(
+        function(appointment) {
+
+            const service =
+                appointment.service ||
+                "Unknown Service";
+
+
+            if (!serviceData[service]) {
+
+                serviceData[service] = 0;
+
+            }
+
+
+            serviceData[service]++;
+
+        }
+    );
+
+
+    const serviceReportList =
+        document.getElementById(
+            "serviceReportList"
+        );
+
+
+    serviceReportList.innerHTML = "";
+
+
+    const serviceNames =
+        Object.keys(serviceData);
+
+
+    if (serviceNames.length === 0) {
+
+        serviceReportList.innerHTML = `
+
+            <p class="no-data">
+                No service data available.
+            </p>
+
+        `;
+
+    } else {
+
+        serviceNames.forEach(
+            function(serviceName) {
+
+                const row =
+                    document.createElement("div");
+
+
+                row.className =
+                    "report-row";
+
+
+                row.innerHTML = `
+
+                    <div>
+
+                        <strong>
+                            ${serviceName}
+                        </strong>
+
+                        <span>
+                            Appointments
+                        </span>
+
+                    </div>
+
+
+                    <strong>
+                        ${serviceData[serviceName]}
+                    </strong>
+
+                `;
+
+
+                serviceReportList.appendChild(row);
+
+            }
+        );
+
+    }
+
+
+
+    // ======================================
+    // STAFF PERFORMANCE
+    // ======================================
+
+    const staffData = {};
+
+
+    filteredAppointments.forEach(
+        function(appointment) {
+
+            const staff =
+                appointment.staff ||
+                "Unassigned";
+
+
+            if (!staffData[staff]) {
+
+                staffData[staff] = 0;
+
+            }
+
+
+            staffData[staff]++;
+
+        }
+    );
+
+
+    const staffReportList =
+        document.getElementById(
+            "staffReportList"
+        );
+
+
+    staffReportList.innerHTML = "";
+
+
+    const staffNames =
+        Object.keys(staffData);
+
+
+    if (staffNames.length === 0) {
+
+        staffReportList.innerHTML = `
+
+            <p class="no-data">
+                No staff data available.
+            </p>
+
+        `;
+
+    } else {
+
+        staffNames.forEach(
+            function(staffName) {
+
+                const row =
+                    document.createElement("div");
+
+
+                row.className =
+                    "report-row";
+
+
+                row.innerHTML = `
+
+                    <div>
+
+                        <strong>
+                            ${staffName}
+                        </strong>
+
+                        <span>
+                            Appointments
+                        </span>
+
+                    </div>
+
+
+                    <strong>
+                        ${staffData[staffName]}
+                    </strong>
+
+                `;
+
+
+                staffReportList.appendChild(row);
+
+            }
+        );
+
+    }
+
+}
+
+
+
+// ======================================
+// START
+// ======================================
+
+loadReports();
+
+</script>
+
+</body>
+
+</html>
+

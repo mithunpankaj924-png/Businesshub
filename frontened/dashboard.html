@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BusinessHub | Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+                <img
+                    src="./images/company logo.png"
+                    alt="BusinessHub"
+                >
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="./dashboard.html" class="nav-item active">
+                    <i data-lucide="layout-dashboard"></i>
+                    Dashboard
+                </a>
+
+                <a href="customer.html" class="nav-item">
+                    <i data-lucide="users"></i>
+                    Customers
+                </a>
+
+                <a href="appointments.html" class="nav-item">
+                    <i data-lucide="calendar-check"></i>
+                    Appointments
+                </a>
+
+                <a href="calender.html" class="nav-item">
+                    <i data-lucide="calendar-days"></i>
+                    Calendar
+                </a>
+
+                <a href="staff.html" class="nav-item">
+                    <i data-lucide="user-round"></i>
+                    Staff
+                </a>
+
+                <a href="./service.html" class="nav-item">
+                    <i data-lucide="sparkles"></i>
+                    Services
+                </a>
+
+                <a href="./reports.html" class="nav-item">
+                    <i data-lucide="bar-chart-3"></i>
+                    Reports
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <a href="./setting.html" class="nav-item">
+                    <i data-lucide="settings"></i>
+                    Settings
+                </a>
+
+                <a href="index.html" class="nav-item logout">
+                    <i data-lucide="log-out"></i>
+                    Sign out
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main content -->
+        <main class="main-content">
+
+            <!-- Topbar -->
+            <header class="topbar">
+
+                <div class="search-box">
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                    >
+                </div>
+
+                <div class="owner-section">
+
+            <div class="notification-wrapper">
+
+    <button
+        class="notification"
+        id="notificationButton"
+    >
+        <i data-lucide="bell"></i>
+
+        <span
+            class="notification-badge"
+            id="notificationBadge"
+        >
+            0
+        </span>
+    </button>
+
+
+    <div
+        class="notification-dropdown"
+        id="notificationDropdown"
+    >
+
+        <div class="notification-header">
+
+            <strong>
+                Notifications
+            </strong>
+
+        </div>
+
+
+        <div
+            id="notificationList"
+            class="notification-list"
+        >
+
+            <p class="no-notifications">
+                No notifications yet.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+                  
+<div class="owner-info">
+
+    <strong id="dashboardBusinessName">
+        Owner
+    </strong>
+
+    <small>
+        Business Owner
+    </small>
+
+</div>
+
+
+
+                </div>
+
+            </header>
+
+
+            <!-- Dashboard -->
+            <section class="dashboard-content">
+
+
+                <!-- Welcome -->
+                <div class="welcome-section">
+
+                    <div>
+
+                       <h1>
+    Good morning, <span id="dashboardOwnerName">Owner</span> 👋
+</h1>
+
+                        <p>
+                            Here's what's happening with your business today.
+                        </p>
+
+                    </div>
+
+
+                   <a href="appointments.html?create=true" class="add-button">
+    + Add Appointment
+</a>
+                </div>
+
+
+                <!-- Statistics -->
+                <div class="stats-grid">
+
+
+                    <!-- Today's Bookings -->
+                    <div class="stat-card">
+
+                        <p>
+                            Today's Bookings
+                        </p>
+
+                        <strong id="todayBookingsCount">
+                            0
+                        </strong>
+
+                        <span>
+                            Appointments today
+                        </span>
+
+                    </div>
+
+
+                    <!-- Total Customers -->
+                    <div class="stat-card">
+
+                        <p>
+                            Total Customers
+                        </p>
+
+                        <strong id="totalCustomersCount">
+                            0
+                        </strong>
+
+                        <span>
+                            Registered customers
+                        </span>
+
+                    </div>
+
+
+                    <!-- Active Services -->
+                    <div class="stat-card">
+
+                        <p>
+                            Active Services
+                        </p>
+
+                        <strong id="activeServicesCount">
+                            0
+                        </strong>
+
+                        <span>
+                            Available services
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Today's appointments -->
+                <section class="appointments-card">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>
+                                Today's Appointments
+                            </h2>
+
+                            <p>
+                                Your upcoming bookings
+                            </p>
+
+                        </div>
+
+
+                        <a href="calender.html">
+                            View Calendar →
+                        </a>
+
+                    </div>
+
+
+                    <!-- Appointment list -->
+                    <div
+                        class="appointment-list"
+                        id="dashboardAppointmentList"
+                    >
+
+                        <p class="no-appointments">
+                            Loading appointments...
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+<script type="module">
+
+    // ======================================
+// FIREBASE
+// ======================================
+
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+import {
+    doc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+import {
+    auth,
+    db
+} from "./firebase-config.js";
+
+    // ======================================
+    // LUCIDE ICONS
+    // ======================================
+
+    lucide.createIcons();
+
+
+    // ======================================
+    // LOAD TODAY'S APPOINTMENTS
+    // ======================================
+
+    function loadDashboardAppointments() {
+
+        const appointmentList =
+            document.getElementById(
+                "dashboardAppointmentList"
+            );
+
+
+        const appointments =
+            JSON.parse(
+                localStorage.getItem(
+                    "businesshub_appointments"
+                )
+            ) || [];
+
+
+        // Get today's date
+
+        const today =
+            new Date();
+
+
+        const todayString =
+            today.getFullYear() +
+            "-" +
+            String(
+                today.getMonth() + 1
+            ).padStart(2, "0") +
+            "-" +
+            String(
+                today.getDate()
+            ).padStart(2, "0");
+
+
+        // Get today's appointments
+
+        const todaysAppointments =
+            appointments.filter(function(appointment) {
+
+                return( appointment.date === todayString
+                 &&
+            appointment.status !== "Cancelled"
+            &&
+            appointment.status !== "Completed"
+            );
+            });
+
+
+        // Clear list
+
+        appointmentList.innerHTML = "";
+
+
+        // No appointments
+
+        if (
+            todaysAppointments.length === 0
+        ) {
+
+            appointmentList.innerHTML = `
+
+                <p class="no-appointments">
+                    No appointments for today.
+                </p>
+
+            `;
+
+            return;
+
+        }
+
+
+        // Sort by time
+
+        todaysAppointments.sort(
+            function(a, b) {
+
+                return a.time.localeCompare(
+                    b.time
+                );
+
+            }
+        );
+
+
+        // Create appointment rows
+
+        todaysAppointments.forEach(
+            function(appointment) {
+
+
+                const timeParts =
+                    appointment.time.split(":");
+
+
+                let hour =
+                    parseInt(
+                        timeParts[0]
+                    );
+
+
+                const minute =
+                    timeParts[1];
+
+
+                const ampm =
+                    hour >= 12
+                        ? "PM"
+                        : "AM";
+
+
+                hour =
+                    hour % 12 || 12;
+
+
+                const formattedTime =
+                    `${hour}:${minute}`;
+
+
+                const appointmentDiv =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                appointmentDiv.className =
+                    "appointment";
+
+
+                appointmentDiv.innerHTML = `
+
+                    <div class="appointment-time">
+
+                        <strong>
+                            ${formattedTime}
+                        </strong>
+
+                        <span>
+                            ${ampm}
+                        </span>
+
+                    </div>
+
+
+                    <div class="appointment-details">
+
+                        <strong>
+                            ${appointment.customerName}
+                        </strong>
+
+                        <span>
+                            ${appointment.service}
+                            •
+                            ${appointment.staff}
+                        </span>
+
+                    </div>
+
+
+                    <span
+                        class="status ${getDashboardStatusClass(appointment.status)}"
+                    >
+
+                        ${appointment.status}
+
+                    </span>
+
+                `;
+
+
+                appointmentList.appendChild(
+                    appointmentDiv
+                );
+
+            }
+        );
+
+    }
+
+
+    // ======================================
+    // STATUS CLASS
+    // ======================================
+
+    function getDashboardStatusClass(status) {
+
+        if (
+            status === "Completed"
+        ) {
+
+            return "completed";
+
+        }
+
+
+        if (
+            status === "Cancelled"
+        ) {
+
+            return "cancelled";
+
+        }
+
+
+        if (
+            status === "Pending"
+        ) {
+
+            return "pending";
+
+        }
+
+
+        return "confirmed";
+
+    }
+
+
+    // ======================================
+    // UPDATE DASHBOARD COUNTS
+    // ======================================
+
+    function updateDashboardCounts() {
+
+
+        // ----------------------------------
+        // APPOINTMENTS
+        // ----------------------------------
+
+        const appointments =
+            JSON.parse(
+                localStorage.getItem(
+                    "businesshub_appointments"
+                )
+            ) || [];
+
+
+        // Today's date
+
+        const today =
+            new Date();
+
+
+        const todayString =
+            today.getFullYear() +
+            "-" +
+            String(
+                today.getMonth() + 1
+            ).padStart(2, "0") +
+            "-" +
+            String(
+                today.getDate()
+            ).padStart(2, "0");
+
+
+        // Count today's bookings
+        // Cancelled appointments are excluded
+
+        const todaysBookings =
+            appointments.filter(
+                function(appointment) {
+
+                    return (
+                        appointment.date ===
+                            todayString
+                        &&
+                        appointment.status !==
+                            "Cancelled"
+                             &&
+    appointment.status !==
+        "Completed"
+                    );
+
+                }
+            );
+
+
+        document.getElementById(
+            "todayBookingsCount"
+        ).textContent =
+            todaysBookings.length;
+
+
+        // ----------------------------------
+        // CUSTOMERS
+        // ----------------------------------
+
+        const customers =
+            JSON.parse(
+                localStorage.getItem(
+                    "businesshub_customers"
+                )
+            ) || [];
+
+
+        document.getElementById(
+            "totalCustomersCount"
+        ).textContent =
+            customers.length;
+
+
+        // ----------------------------------
+        // SERVICES
+        // ----------------------------------
+
+        const services =
+            JSON.parse(
+                localStorage.getItem(
+                    "businesshub_services"
+                )
+            ) || [];
+
+
+        let activeServices;
+
+
+        /*
+         * If services contain a status field,
+         * count only Active services.
+         *
+         * If there is no status field,
+         * count all saved services.
+         */
+
+        if (
+            services.length > 0 &&
+            services.some(
+                function(service) {
+
+                    return (
+                        service.status !==
+                        undefined
+                    );
+
+                }
+            )
+        ) {
+
+            activeServices =
+                services.filter(
+                    function(service) {
+
+                        return (
+                            service.status ===
+                                "Active"
+                            ||
+                            service.status ===
+                                "active"
+                        );
+
+                    }
+                );
+
+        } else {
+
+            activeServices =
+                services;
+
+        }
+
+
+        document.getElementById(
+            "activeServicesCount"
+        ).textContent =
+            activeServices.length;
+
+    }
+
+
+    // ======================================
+    // START DASHBOARD
+    // ======================================
+
+    loadDashboardAppointments();
+
+    updateDashboardCounts();
+
+
+    
+// ======================================
+// LOAD BUSINESS NAME FROM FIRESTORE
+// ======================================
+async function loadDashboardBusinessName() {
+
+    onAuthStateChanged(auth, async function(user) {
+
+        if (!user) {
+            window.location.href = "index.html";
+            return;
+        }
+
+        try {
+
+            const businessRef =
+                doc(db, "businesses", user.uid);
+
+            const businessSnap =
+                await getDoc(businessRef);
+
+            if (businessSnap.exists()) {
+
+                const data =
+                    businessSnap.data();
+
+                const businessName =
+                    data.businessName || "Owner";
+
+                const ownerElement =
+                    document.getElementById(
+                        "dashboardOwnerName"
+                    );
+
+                if (ownerElement) {
+                    ownerElement.textContent =
+                        businessName;
+                }
+
+                const businessElement =
+                    document.getElementById(
+                        "dashboardBusinessName"
+                    );
+
+                if (businessElement) {
+                    businessElement.textContent =
+                        businessName;
+                }
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Error loading business:",
+                error
+            );
+
+        }
+
+    });
+
+}
+
+loadDashboardBusinessName();
+
+
+
+
+
+
+
+
+// ======================================
+// AUTO OPEN CREATE APPOINTMENT
+// ======================================
+
+const urlParams =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+if (
+    urlParams.get("create") === "true"
+) {
+
+    appointmentModal.classList.add(
+        "show"
+    );
+
+    loadCustomers();
+
+    loadStaff();
+
+}
+
+
+// ======================================
+// NOTIFICATION DROPDOWN
+// ======================================
+
+const notificationButton =
+    document.getElementById(
+        "notificationButton"
+    );
+
+const notificationDropdown =
+    document.getElementById(
+        "notificationDropdown"
+    );
+
+
+notificationButton.addEventListener(
+    "click",
+    function(event) {
+
+        event.stopPropagation();
+
+        notificationDropdown.classList.toggle(
+            "show"
+        );
+
+
+        // Mark notifications as read
+
+        if (
+            notificationDropdown.classList.contains(
+                "show"
+            )
+        ) {
+
+           const appointments =
+    JSON.parse(
+        localStorage.getItem(
+            "businesshub_appointments"
+        )
+    ) || [];
+
+
+const latestAppointment =
+    appointments
+        .slice()
+        .sort(function(a, b) {
+            return b.id - a.id;
+        })[0];
+
+
+if (latestAppointment) {
+
+    localStorage.setItem(
+        "businesshub_notifications_read",
+        latestAppointment.id
+    );
+
+}
+
+            const notificationBadge =
+                document.getElementById(
+                    "notificationBadge"
+                );
+
+
+            notificationBadge.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+// Close when clicking outside
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            !notificationDropdown.contains(
+                event.target
+            )
+            &&
+            !notificationButton.contains(
+                event.target
+            )
+        ) {
+
+            notificationDropdown.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+// ======================================
+// LOAD NOTIFICATIONS
+// ======================================
+
+function loadNotifications() {
+
+    const notificationList =
+        document.getElementById(
+            "notificationList"
+        );
+
+    const notificationBadge =
+        document.getElementById(
+            "notificationBadge"
+        );
+
+
+    const appointments =
+        JSON.parse(
+            localStorage.getItem(
+                "businesshub_appointments"
+            )
+        ) || [];
+
+
+    // Clear old notifications
+
+    notificationList.innerHTML = "";
+
+
+    // Get latest appointments
+
+    const recentAppointments =
+        appointments
+            .slice()
+            .sort(function(a, b) {
+
+                return b.id - a.id;
+
+            })
+            .slice(0, 5);
+
+
+    // No notifications
+
+    if (recentAppointments.length === 0) {
+
+        notificationList.innerHTML = `
+            <p class="no-notifications">
+                No notifications yet.
+            </p>
+        `;
+
+        notificationBadge.style.display =
+            "none";
+
+        return;
+
+    }
+
+
+    // Create notifications
+
+    recentAppointments.forEach(
+        function(appointment) {
+
+            const notificationItem =
+                document.createElement("div");
+
+            notificationItem.className =
+                "notification-item";
+
+
+            let message = "";
+
+
+            if (
+                appointment.status ===
+                "Cancelled"
+            ) {
+
+                message =
+                    `${appointment.customerName}'s appointment was cancelled.`;
+
+            }
+
+            else if (
+                appointment.status ===
+                "Completed"
+            ) {
+
+                message =
+                    `${appointment.customerName}'s appointment was completed.`;
+
+            }
+
+            else {
+
+                message =
+                    `New appointment booked by ${appointment.customerName}.`;
+
+            }
+
+
+         notificationItem.innerHTML = `
+
+    <div class="notification-title">
+
+        <span class="notification-icon">
+            ${
+                appointment.status === "Cancelled"
+                    ? "❌"
+                    : appointment.status === "Completed"
+                        ? "✅"
+                        : "🆕"
+            }
+        </span>
+
+        <strong>
+            ${
+                appointment.status === "Cancelled"
+                    ? "Appointment Cancelled"
+                    : appointment.status === "Completed"
+                        ? "Appointment Completed"
+                        : "New Appointment"
+            }
+        </strong>
+
+    </div>
+
+
+    <span>
+        ${appointment.customerName}
+        •
+        ${appointment.service}
+    </span>
+
+
+    <span>
+        ${appointment.date}
+        •
+        ${appointment.time}
+    </span>
+
+`;
+
+
+            notificationList.appendChild(
+                notificationItem
+            );
+
+        }
+    );
+
+
+    // Update badge
+
+const lastReadId =
+    Number(
+        localStorage.getItem(
+            "businesshub_notifications_read"
+        )
+    ) || 0;
+
+
+const latestAppointment =
+    recentAppointments[0];
+
+
+const hasUnreadNotification =
+    latestAppointment &&
+    Number(latestAppointment.id) >
+    lastReadId;
+
+
+notificationBadge.textContent =
+    recentAppointments.length;
+
+
+if (hasUnreadNotification) {
+
+    notificationBadge.style.display =
+        "flex";
+
+} else {
+
+    notificationBadge.style.display =
+        "none";
+
+}
+
+}
+
+
+// ======================================
+// START NOTIFICATIONS
+// ======================================
+
+loadNotifications();
+
+
+
+// ======================================
+// AUTO REFRESH NOTIFICATIONS
+// ======================================
+
+window.addEventListener(
+    "storage",
+    function(event) {
+
+        if (
+            event.key ===
+            "businesshub_appointments"
+        ) {
+
+            loadNotifications();
+
+        }
+
+    }
+);
+
+
+</script>
+
+</body>
+
+</html>
